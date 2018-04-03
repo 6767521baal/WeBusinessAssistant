@@ -12,6 +12,14 @@
 		DA5346822073652500733FBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA5346802073652500733FBF /* Main.storyboard */; };
 		DA5346842073652500733FBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA5346832073652500733FBF /* Assets.xcassets */; };
 		DA5346872073652500733FBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA5346852073652500733FBF /* LaunchScreen.storyboard */; };
+		DA53468F20736E8800733FBF /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA53468E20736E8800733FBF /* MainController.swift */; };
+		DA5346922073724A00733FBF /* GoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5346912073724A00733FBF /* GoodsViewController.swift */; };
+		DA5346942073727F00733FBF /* CustomerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5346932073727F00733FBF /* CustomerViewController.swift */; };
+		DA534696207376B500733FBF /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA534695207376B500733FBF /* OrderViewController.swift */; };
+		DA534698207376C500733FBF /* CountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA534697207376C500733FBF /* CountViewController.swift */; };
+		DA53469A207376D300733FBF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA534699207376D300733FBF /* SettingViewController.swift */; };
+		DA53469D20737DC000733FBF /* Goods.png in Resources */ = {isa = PBXBuildFile; fileRef = DA53469C20737DC000733FBF /* Goods.png */; };
+		DA53469F20737E5F00733FBF /* Order.png in Resources */ = {isa = PBXBuildFile; fileRef = DA53469E20737E5F00733FBF /* Order.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +30,14 @@
 		DA5346832073652500733FBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA5346862073652500733FBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA5346882073652500733FBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA53468E20736E8800733FBF /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
+		DA5346912073724A00733FBF /* GoodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsViewController.swift; sourceTree = "<group>"; };
+		DA5346932073727F00733FBF /* CustomerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerViewController.swift; sourceTree = "<group>"; };
+		DA534695207376B500733FBF /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
+		DA534697207376C500733FBF /* CountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountViewController.swift; sourceTree = "<group>"; };
+		DA534699207376D300733FBF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		DA53469C20737DC000733FBF /* Goods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Goods.png; sourceTree = "<group>"; };
+		DA53469E20737E5F00733FBF /* Order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Order.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -38,6 +54,7 @@
 		DA5346702073652500733FBF = {
 			isa = PBXGroup;
 			children = (
+				DA53469B20737D9900733FBF /* Res */,
 				DA53467B2073652500733FBF /* WeBusinessAssistant */,
 				DA53467A2073652500733FBF /* Products */,
 			);
@@ -60,8 +77,31 @@
 				DA5346832073652500733FBF /* Assets.xcassets */,
 				DA5346852073652500733FBF /* LaunchScreen.storyboard */,
 				DA5346882073652500733FBF /* Info.plist */,
+				DA53469020736E9200733FBF /* Controller */,
 			);
 			path = WeBusinessAssistant;
+			sourceTree = "<group>";
+		};
+		DA53469020736E9200733FBF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				DA53468E20736E8800733FBF /* MainController.swift */,
+				DA5346912073724A00733FBF /* GoodsViewController.swift */,
+				DA5346932073727F00733FBF /* CustomerViewController.swift */,
+				DA534695207376B500733FBF /* OrderViewController.swift */,
+				DA534697207376C500733FBF /* CountViewController.swift */,
+				DA534699207376D300733FBF /* SettingViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DA53469B20737D9900733FBF /* Res */ = {
+			isa = PBXGroup;
+			children = (
+				DA53469E20737E5F00733FBF /* Order.png */,
+				DA53469C20737DC000733FBF /* Goods.png */,
+			);
+			path = Res;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,6 +163,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DA53469D20737DC000733FBF /* Goods.png in Resources */,
+				DA53469F20737E5F00733FBF /* Order.png in Resources */,
 				DA5346872073652500733FBF /* LaunchScreen.storyboard in Resources */,
 				DA5346842073652500733FBF /* Assets.xcassets in Resources */,
 				DA5346822073652500733FBF /* Main.storyboard in Resources */,
@@ -137,7 +179,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DA53467F2073652500733FBF /* ViewController.swift in Sources */,
+				DA5346942073727F00733FBF /* CustomerViewController.swift in Sources */,
+				DA53468F20736E8800733FBF /* MainController.swift in Sources */,
+				DA53469A207376D300733FBF /* SettingViewController.swift in Sources */,
+				DA534696207376B500733FBF /* OrderViewController.swift in Sources */,
 				DA53467D2073652500733FBF /* AppDelegate.swift in Sources */,
+				DA534698207376C500733FBF /* CountViewController.swift in Sources */,
+				DA5346922073724A00733FBF /* GoodsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

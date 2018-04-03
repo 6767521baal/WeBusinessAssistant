@@ -1,24 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A277" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="grh-z2-oej">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Main Controller-->
+        <scene sceneID="qY7-yu-JvO">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <tabBarController id="grh-z2-oej" customClass="MainController" customModule="WeBusinessAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ajP-Xr-l3X">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="poa-YQ-suv" kind="relationship" relationship="viewControllers" id="YdH-9e-mSN"/>
+                        <segue destination="gBl-WI-gOZ" kind="relationship" relationship="viewControllers" id="Lfd-Gx-sSh"/>
+                        <segue destination="wUD-fY-Mjo" kind="relationship" relationship="viewControllers" id="J1c-1a-pe4"/>
+                        <segue destination="iNa-ck-bnu" kind="relationship" relationship="viewControllers" id="aAC-Aa-w19"/>
+                        <segue destination="ZT7-QQ-A6X" kind="relationship" relationship="viewControllers" id="Nga-7b-9lw"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eWx-MY-XQm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2334" y="458"/>
+        </scene>
+        <!--GoodsView-->
+        <scene sceneID="SuU-wB-gL3">
+            <objects>
+                <viewController title="GoodsView" id="poa-YQ-suv" customClass="GoodsViewController" customModule="WeBusinessAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZZF-iF-r8r">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5BY-uI-n65"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="商品" image="Goods" id="3Gu-wY-ThQ">
+                        <color key="badgeColor" red="0.26274511218070984" green="0.55686277151107788" blue="0.25882354378700256" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Gr-Zr-VdE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-954" y="-1028"/>
+        </scene>
+        <!--CustomerView-->
+        <scene sceneID="pCv-7o-M4o">
+            <objects>
+                <viewController title="CustomerView" id="gBl-WI-gOZ" customClass="CustomerViewController" customModule="WeBusinessAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6y5-Ms-qnv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="m4S-1R-N3t"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="客户" id="Qa9-wi-LKT">
+                        <color key="badgeColor" red="0.74117648601531982" green="0.16470588743686676" blue="0.89803922176361084" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    </tabBarItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SR9-vX-93T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-954" y="-296"/>
+        </scene>
+        <!--OrderView-->
+        <scene sceneID="O9H-0Z-LXe">
+            <objects>
+                <viewController title="OrderView" id="wUD-fY-Mjo" customClass="OrderViewController" customModule="WeBusinessAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="khV-cy-Nm5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="Jhf-Q6-HKZ"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="订单" image="Order" id="KX8-GA-uai"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Val-SB-zBy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-954" y="459"/>
+        </scene>
+        <!--CountView-->
+        <scene sceneID="Mq9-Ch-AaS">
+            <objects>
+                <viewController title="CountView" id="iNa-ck-bnu" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Osd-0W-pqe">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="5da-3r-5Zd"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="统计" id="IAX-74-lEf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wz5-jj-v3y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-954" y="1237"/>
+        </scene>
+        <!--SettingView-->
+        <scene sceneID="t5u-et-zWq">
+            <objects>
+                <viewController title="SettingView" id="ZT7-QQ-A6X" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VoJ-ar-1JE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="OeH-tj-hGP"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="设置" id="kUD-ip-bKu"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U0d-Wq-yva" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-954" y="1951"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Goods" width="25" height="25"/>
+        <image name="Order" width="25" height="25"/>
+    </resources>
 </document>
