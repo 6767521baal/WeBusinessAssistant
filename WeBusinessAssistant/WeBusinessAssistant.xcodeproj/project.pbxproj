@@ -8,36 +8,42 @@
 
 /* Begin PBXBuildFile section */
 		DA53467D2073652500733FBF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA53467C2073652500733FBF /* AppDelegate.swift */; };
-		DA53467F2073652500733FBF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA53467E2073652500733FBF /* ViewController.swift */; };
 		DA5346822073652500733FBF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA5346802073652500733FBF /* Main.storyboard */; };
 		DA5346842073652500733FBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA5346832073652500733FBF /* Assets.xcassets */; };
 		DA5346872073652500733FBF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA5346852073652500733FBF /* LaunchScreen.storyboard */; };
 		DA53468F20736E8800733FBF /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA53468E20736E8800733FBF /* MainController.swift */; };
-		DA5346922073724A00733FBF /* GoodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5346912073724A00733FBF /* GoodsViewController.swift */; };
-		DA5346942073727F00733FBF /* CustomerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5346932073727F00733FBF /* CustomerViewController.swift */; };
 		DA534696207376B500733FBF /* OrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA534695207376B500733FBF /* OrderViewController.swift */; };
 		DA534698207376C500733FBF /* CountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA534697207376C500733FBF /* CountViewController.swift */; };
 		DA53469A207376D300733FBF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA534699207376D300733FBF /* SettingViewController.swift */; };
-		DA53469D20737DC000733FBF /* Goods.png in Resources */ = {isa = PBXBuildFile; fileRef = DA53469C20737DC000733FBF /* Goods.png */; };
-		DA53469F20737E5F00733FBF /* Order.png in Resources */ = {isa = PBXBuildFile; fileRef = DA53469E20737E5F00733FBF /* Order.png */; };
+		DA5346A12074A2F800733FBF /* Customer.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5346A02074A2F800733FBF /* Customer.png */; };
+		DA5346A32074A3AF00733FBF /* Count.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5346A22074A3AF00733FBF /* Count.png */; };
+		DA5346A72074A42200733FBF /* Setting.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5346A62074A42200733FBF /* Setting.png */; };
+		DA5346A92074A50900733FBF /* Goods.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5346A82074A50900733FBF /* Goods.png */; };
+		DA5346AB2074A5B100733FBF /* Order.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5346AA2074A5B100733FBF /* Order.png */; };
+		DA5346AD2074BAE900733FBF /* GoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5346AC2074BAE900733FBF /* GoodsTableViewController.swift */; };
+		DA5346AF2074BD8800733FBF /* Add.png in Resources */ = {isa = PBXBuildFile; fileRef = DA5346AE2074BD8800733FBF /* Add.png */; };
+		DA5346B22074C1D900733FBF /* GoodsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5346B12074C1D900733FBF /* GoodsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		DA5346792073652500733FBF /* WeBusinessAssistant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeBusinessAssistant.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA53467C2073652500733FBF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA53467E2073652500733FBF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DA5346812073652500733FBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA5346832073652500733FBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA5346862073652500733FBF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA5346882073652500733FBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA53468E20736E8800733FBF /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
-		DA5346912073724A00733FBF /* GoodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsViewController.swift; sourceTree = "<group>"; };
-		DA5346932073727F00733FBF /* CustomerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerViewController.swift; sourceTree = "<group>"; };
 		DA534695207376B500733FBF /* OrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderViewController.swift; sourceTree = "<group>"; };
 		DA534697207376C500733FBF /* CountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountViewController.swift; sourceTree = "<group>"; };
 		DA534699207376D300733FBF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
-		DA53469C20737DC000733FBF /* Goods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Goods.png; sourceTree = "<group>"; };
-		DA53469E20737E5F00733FBF /* Order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Order.png; sourceTree = "<group>"; };
+		DA5346A02074A2F800733FBF /* Customer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Customer.png; sourceTree = "<group>"; };
+		DA5346A22074A3AF00733FBF /* Count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Count.png; sourceTree = "<group>"; };
+		DA5346A62074A42200733FBF /* Setting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Setting.png; sourceTree = "<group>"; };
+		DA5346A82074A50900733FBF /* Goods.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Goods.png; sourceTree = "<group>"; };
+		DA5346AA2074A5B100733FBF /* Order.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Order.png; sourceTree = "<group>"; };
+		DA5346AC2074BAE900733FBF /* GoodsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsTableViewController.swift; sourceTree = "<group>"; };
+		DA5346AE2074BD8800733FBF /* Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Add.png; sourceTree = "<group>"; };
+		DA5346B12074C1D900733FBF /* GoodsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,11 +78,11 @@
 			isa = PBXGroup;
 			children = (
 				DA53467C2073652500733FBF /* AppDelegate.swift */,
-				DA53467E2073652500733FBF /* ViewController.swift */,
 				DA5346802073652500733FBF /* Main.storyboard */,
 				DA5346832073652500733FBF /* Assets.xcassets */,
 				DA5346852073652500733FBF /* LaunchScreen.storyboard */,
 				DA5346882073652500733FBF /* Info.plist */,
+				DA5346B02074C16400733FBF /* Model */,
 				DA53469020736E9200733FBF /* Controller */,
 			);
 			path = WeBusinessAssistant;
@@ -86,11 +92,10 @@
 			isa = PBXGroup;
 			children = (
 				DA53468E20736E8800733FBF /* MainController.swift */,
-				DA5346912073724A00733FBF /* GoodsViewController.swift */,
-				DA5346932073727F00733FBF /* CustomerViewController.swift */,
 				DA534695207376B500733FBF /* OrderViewController.swift */,
 				DA534697207376C500733FBF /* CountViewController.swift */,
 				DA534699207376D300733FBF /* SettingViewController.swift */,
+				DA5346AC2074BAE900733FBF /* GoodsTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -98,10 +103,22 @@
 		DA53469B20737D9900733FBF /* Res */ = {
 			isa = PBXGroup;
 			children = (
-				DA53469E20737E5F00733FBF /* Order.png */,
-				DA53469C20737DC000733FBF /* Goods.png */,
+				DA5346AE2074BD8800733FBF /* Add.png */,
+				DA5346A82074A50900733FBF /* Goods.png */,
+				DA5346A22074A3AF00733FBF /* Count.png */,
+				DA5346A02074A2F800733FBF /* Customer.png */,
+				DA5346A62074A42200733FBF /* Setting.png */,
+				DA5346AA2074A5B100733FBF /* Order.png */,
 			);
 			path = Res;
+			sourceTree = "<group>";
+		};
+		DA5346B02074C16400733FBF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DA5346B12074C1D900733FBF /* GoodsTableViewCell.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -163,11 +180,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA53469D20737DC000733FBF /* Goods.png in Resources */,
-				DA53469F20737E5F00733FBF /* Order.png in Resources */,
+				DA5346AB2074A5B100733FBF /* Order.png in Resources */,
+				DA5346A92074A50900733FBF /* Goods.png in Resources */,
+				DA5346A12074A2F800733FBF /* Customer.png in Resources */,
+				DA5346AF2074BD8800733FBF /* Add.png in Resources */,
 				DA5346872073652500733FBF /* LaunchScreen.storyboard in Resources */,
+				DA5346A72074A42200733FBF /* Setting.png in Resources */,
 				DA5346842073652500733FBF /* Assets.xcassets in Resources */,
 				DA5346822073652500733FBF /* Main.storyboard in Resources */,
+				DA5346A32074A3AF00733FBF /* Count.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,14 +199,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA53467F2073652500733FBF /* ViewController.swift in Sources */,
-				DA5346942073727F00733FBF /* CustomerViewController.swift in Sources */,
 				DA53468F20736E8800733FBF /* MainController.swift in Sources */,
+				DA5346AD2074BAE900733FBF /* GoodsTableViewController.swift in Sources */,
+				DA5346B22074C1D900733FBF /* GoodsTableViewCell.swift in Sources */,
 				DA53469A207376D300733FBF /* SettingViewController.swift in Sources */,
 				DA534696207376B500733FBF /* OrderViewController.swift in Sources */,
 				DA53467D2073652500733FBF /* AppDelegate.swift in Sources */,
 				DA534698207376C500733FBF /* CountViewController.swift in Sources */,
-				DA5346922073724A00733FBF /* GoodsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
