@@ -1,0 +1,17 @@
+PODS:
+  - SQLite.swift (0.11.4):
+    - SQLite.swift/standard (= 0.11.4)
+  - SQLite.swift/standard (0.11.4)
+  - SwiftForms (1.8.2)
+
+DEPENDENCIES:
+  - SQLite.swift (~> 0.11.4)
+  - SwiftForms
+
+SPEC CHECKSUMS:
+  SQLite.swift: 3e3bee21da701b5b9f87c4a672cb54f233505692
+  SwiftForms: f0d4d30401e21de87d9b7b63a4691a3d4e22bab5
+
+PODFILE CHECKSUM: f08d74688b309123aaa6f2858b7f398ecf5b21bb
+
+COCOAPODS: 1.4.0

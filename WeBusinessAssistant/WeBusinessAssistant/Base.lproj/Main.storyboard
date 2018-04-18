@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="grh-z2-oej">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="grh-z2-oej">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Main Controller-->
         <scene sceneID="qY7-yu-JvO">
             <objects>
-                <tabBarController id="grh-z2-oej" customClass="MainController" customModule="WeBusinessAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" id="grh-z2-oej" customClass="MainController" customModule="WeBusinessAssistant" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ajP-Xr-l3X">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -57,7 +57,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVa-G5-mqu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-450" y="-1032"/>
+            <point key="canvasLocation" x="-687" y="-1032"/>
         </scene>
         <!--商品管理-->
         <scene sceneID="bcK-On-qsx">
@@ -68,7 +68,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GoodsCell" id="iSa-tr-c9F" customClass="GoodsTableViewCell" customModule="WeBusinessAssistant" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="iSa-tr-c9F">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="iSa-tr-c9F" id="1m5-7p-EbP">
@@ -91,10 +91,62 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <segue destination="PjF-y6-u2s" kind="showDetail" identifier="GoodsAppend" id="NXh-5H-moZ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Czm-LG-iPM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-450" y="-294"/>
+            <point key="canvasLocation" x="-686" y="-295"/>
+        </scene>
+        <!--添加商品-->
+        <scene sceneID="eMW-bL-dvs">
+            <objects>
+                <tableViewController id="UYM-1n-jnD" customClass="GoodsAppendViewController" customModule="WeBusinessAssistant" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="2NE-6n-Ugt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <connections>
+                            <outlet property="dataSource" destination="UYM-1n-jnD" id="UNg-M4-UTf"/>
+                            <outlet property="delegate" destination="UYM-1n-jnD" id="2CB-JR-9ka"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="添加商品" id="tdN-Eq-y25">
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="x1o-gq-nB5">
+                            <connections>
+                                <action selector="backToGoodsManagement:" destination="UYM-1n-jnD" id="dYc-fm-djf"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="yKu-fU-FPn">
+                            <connections>
+                                <action selector="appendFinish:" destination="UYM-1n-jnD" id="kuF-ne-9wc"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="GMq-73-C64" kind="showDetail" identifier="Return" id="GWA-gq-oeN"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Dn-K4-aQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="823" y="-296"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="T91-TV-tF8">
+            <objects>
+                <navigationController id="PjF-y6-u2s" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="REh-95-vbe">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UYM-1n-jnD" kind="relationship" relationship="rootViewController" id="Wq7-JT-Bg4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sxC-bN-Bpy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="105" y="-295"/>
         </scene>
         <!--订单管理-->
         <scene sceneID="V9p-Nq-gnP">
@@ -123,11 +175,10 @@
                     <navigationItem key="navigationItem" title="订单管理" id="kXr-vR-LxM">
                         <barButtonItem key="rightBarButtonItem" image="Add" id="brr-1O-sPe"/>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7DT-KN-AZf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-450" y="457"/>
+            <point key="canvasLocation" x="-687" y="457"/>
         </scene>
         <!--订单-->
         <scene sceneID="eTf-jG-Z2A">
@@ -151,6 +202,7 @@
             <objects>
                 <navigationController id="GMq-73-C64" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="商品" image="Goods" id="YJP-i2-yah"/>
+                    <navigationItem key="navigationItem" id="uJ8-Hd-gfl"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Idn-qD-FdW">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -187,4 +239,7 @@
         <image name="Goods" width="25" height="25"/>
         <image name="Order" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="nwQ-W4-ioj"/>
+    </inferredMetricsTieBreakers>
 </document>
