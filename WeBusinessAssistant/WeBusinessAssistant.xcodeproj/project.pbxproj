@@ -127,10 +127,8 @@
 				DA534695207376B500733FBF /* OrderViewController.swift */,
 				DA534697207376C500733FBF /* CountViewController.swift */,
 				DA534699207376D300733FBF /* SettingViewController.swift */,
-				DA5346AC2074BAE900733FBF /* GoodsTableViewController.swift */,
-				DA50FE53208095A2004E1676 /* GoodsAppendViewController.swift */,
-				DAB4D00720871F2F002EF9A8 /* DetailTableViewCell.swift */,
-				DAB4D00820871F2F002EF9A8 /* DetailTableViewCell.xib */,
+				DAA9509D2087333F00AEE9E4 /* Goods */,
+				DAA9509C2087332300AEE9E4 /* cell */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -155,6 +153,24 @@
 				DA1CD2F9207C6A7000B21AC8 /* BADataObject.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		DAA9509C2087332300AEE9E4 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				DAB4D00720871F2F002EF9A8 /* DetailTableViewCell.swift */,
+				DAB4D00820871F2F002EF9A8 /* DetailTableViewCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		DAA9509D2087333F00AEE9E4 /* Goods */ = {
+			isa = PBXGroup;
+			children = (
+				DA5346AC2074BAE900733FBF /* GoodsTableViewController.swift */,
+				DA50FE53208095A2004E1676 /* GoodsAppendViewController.swift */,
+			);
+			path = Goods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

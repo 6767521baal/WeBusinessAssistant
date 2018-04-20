@@ -10,23 +10,29 @@ import Foundation
 
 class BADataGoods : NSObject {
     
+    var id:Int64
     var name :String
     var type :String
+    var count :Int64
     var purchase :String
     var purchase_other :String
     var sell :String
     var proxy :String
     var note :String
+    var delete :Bool
     
     override init()
     {
+        id = -1
         name = ""
         type = ""
+        count = 0
         purchase = ""
         purchase_other = ""
         sell = ""
         proxy = ""
         note = ""
+        delete = false
     }
     
 }
@@ -36,6 +42,8 @@ class BADataObject: NSObject {
     var database : BADatabase!
     
     var dataGoods :[BADataGoods] = []
+    
+    var dataGoodEdit :BADataGoods? = nil
     
     private static let dataManager = BADataObject()
     
@@ -65,7 +73,40 @@ class BADataObject: NSObject {
         default:
             type = 3
         }
-        return database.insertItemTableGoods(name: data.name, type: type, purchase: data.purchase, purchase_other: data.purchase_other, sell: data.sell, proxy: data.proxy, note: data.note)
+        var delete :Int64 = 0
+        if data.delete {
+            delete = 1
+        }
+        return database.insertItemTableGoods(name: data.name, type: type, count : data.count, purchase: data.purchase, purchase_other: data.purchase_other, sell: data.sell, proxy: data.proxy, note: data.note, delete: delete)
+    }
+    
+    func updateGoodData(goodID :Int64, name: String, type: String, count: Int64, purchase: String, purchase_other: String, sell: String, proxy: String, note: String, delete: Bool) -> Bool {
+        let typeInt: Int64
+        switch type {
+        case "保健品":
+            typeInt = 0
+        case "美妆":
+            typeInt = 1
+        case "婴儿用品":
+            typeInt = 2
+        default:
+            typeInt = 3
+        }
+        var deleteInt :Int64 = 0
+        if delete {
+            deleteInt = 1
+        }
+        return database.updateItemTableGood(goodID, name, typeInt, count, purchase, purchase_other, sell, proxy, note, deleteInt)
+    }
+    
+    func getGoodData(goodID :Int64) -> BADataGoods? {
+        refreshGoodsData()
+        for good in dataGoods {
+            if good.id == goodID {
+                return good
+            }
+        }
+        return nil
     }
     
     func getGoodsData() -> [BADataGoods] {
@@ -81,21 +122,12 @@ class BADataObject: NSObject {
         }
     }
     
-    func deleteGoodsData(at :Int) {
-        let type :Int
-        switch dataGoods[at].type {
-        case "保健品":
-            type = 0
-        case "美妆":
-            type = 1
-        case "婴儿用品":
-            type = 2
-        default:
-            type = 3
-        }
-        database.deleteItemTableGoods(name: dataGoods[at].name, type: Int64(type))
+    func deleteGoodsData(goodID :Int64) -> Bool {
+        let bRet = database.deleteItemTableGoods(goodID: goodID)
         
         refreshGoodsData()
+        
+        return bRet
     }
     
 }

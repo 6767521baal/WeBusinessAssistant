@@ -14,20 +14,28 @@ class DetailTableViewCell: UITableViewCell {
     
     @IBOutlet weak var labelName: UILabel!
     
-    @IBOutlet weak var labelType: UILabel!
+    @IBOutlet weak var labelSell: UILabel!
+    
+    @IBOutlet weak var labelCount: UILabel!
     
     @IBOutlet weak var labelPurchase: UILabel!
     
-    @IBOutlet weak var labelPurchase_other: UILabel!
+    @IBOutlet weak var labelProfit: UILabel!
+    
+    @IBOutlet weak var labelType: UILabel!
+    
+    @IBOutlet weak var labelProxy: UILabel!
+    
+    @IBOutlet weak var labelNote: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         //设置cell是有圆角边框显示
-        viewCell.layer.cornerRadius = 5
-        viewCell.backgroundColor = UIColor.cyan
-        labelName.textColor = UIColor.darkGray
-        labelType.textColor = UIColor.darkText
+        viewCell.layer.cornerRadius = 2
+        viewCell.layer.borderWidth = 1
+        viewCell.layer.borderColor = #colorLiteral(red: 0.4745098054, green: 0.8392156959, blue: 0.9764705896, alpha: 1)
+        labelName.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

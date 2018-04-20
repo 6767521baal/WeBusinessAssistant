@@ -11,9 +11,12 @@ import SwiftForms
 
 class GoodsAppendViewController: FormViewController {
     
+    var data :BADataGoods? = nil
+    
     struct StaticTag {
         static let nameTag = "name"
         static let typeTag = "type"
+        static let countTag = "count"
         static let purchaseTag = "purchase"
         static let purchase_otherTag = "purchase_other"
         static let sellTag = "sell"
@@ -27,43 +30,33 @@ class GoodsAppendViewController: FormViewController {
     }
     
     @IBAction func appendFinish(_ sender: UIBarButtonItem) {
-        // 新增商品入库
-        let data = BADataGoods()
-        let goodAppend = self.form.formValues()
-        print("\(self.form.formValues().description)")
-        data.name = goodAppend[StaticTag.nameTag] as! String
-        switch goodAppend[StaticTag.typeTag] as! Int64 {
-        case 0:
-            data.type = "保健品"
-        case 1:
-            data.type = "美妆"
-        case 2:
-            data.type = "婴儿用品"
-        default:
-            data.type = "其他"
+        // 检查必填项
+        if !checkFields() {
+            // 提示
+            let alertController = UIAlertController(title: "提示",
+                                                    message: "请填写带*的必填项。", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "确定", style: .cancel, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+            return
         }
-        if let purchase = goodAppend[StaticTag.purchaseTag] as? String {
-            data.purchase = purchase
+        if data == nil {
+            // 新增商品入库
+            data = BADataGoods()
+            getDataFromForm()
+            if BADataObject.shareInstance().addGoodData(data: data!) {
+                print("添加商品成功！\n")
+            }
         }
-        if let purchase_other = goodAppend[StaticTag.purchase_otherTag] as? String {
-            data.purchase_other = purchase_other
-        }
-        if let sell = goodAppend[StaticTag.sellTag] as? String {
-            data.sell = sell
-        }
-        if let proxy = goodAppend[StaticTag.proxyTag] as? String {
-            data.proxy = proxy
-        }
-        if let note = goodAppend[StaticTag.noteTag] as? String {
-            data.note = note
-        }
-        
-        if BADataObject.shareInstance().addGoodData(data: data) {
-            print("添加商品成功！\n")
+        else {
+            getDataFromForm()
+            // 修改商品信息
+            if BADataObject.shareInstance().updateGoodData(goodID: data!.id, name: data!.name, type: data!.type, count: data!.count, purchase: data!.purchase, purchase_other: data!.purchase_other, sell: data!.sell, proxy: data!.proxy, note: data!.note, delete: data!.delete){
+                print("修改商品成功！\n")
+            }
         }
         
         // 返回商品管理
-        //self.performSegue(withIdentifier: "Return", sender: nil)
         let sb = UIStoryboard(name:"Main", bundle: nil)
         
         let listController = sb.instantiateViewController(withIdentifier: "MainTabBarController") as! MainController
@@ -78,7 +71,13 @@ class GoodsAppendViewController: FormViewController {
     
     fileprivate func loadForm() {
         
-        let form = FormDescriptor(title: "添加商品")
+        let form :FormDescriptor
+        if BADataObject.shareInstance().dataGoodEdit == nil {
+            form = FormDescriptor(title: "添加商品")
+        }
+        else {
+            form = FormDescriptor(title: "修改商品")
+        }
         
         let section1 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
         
@@ -86,7 +85,7 @@ class GoodsAppendViewController: FormViewController {
         row.configuration.cell.appearance = ["textField.placeholder" : "商品名称" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject, "textField.textColor" : UIColor.red as AnyObject]
         section1.rows.append(row)
         
-        row = FormRowDescriptor(tag: StaticTag.typeTag, type: .picker, title: "商品类型*")
+        row = FormRowDescriptor(tag: StaticTag.typeTag, type: .picker, title: "商品类型")
         row.configuration.cell.showsInputToolbar = true
         row.configuration.selection.options = ([0, 1, 2, 3] as [AnyObject]) as [AnyObject]
         row.configuration.selection.optionTitleClosure = { value in
@@ -104,7 +103,10 @@ class GoodsAppendViewController: FormViewController {
         }
         
         row.value = 3 as AnyObject
-        row.configuration.cell.appearance["valueLabel.textColor"] = UIColor.red
+        section1.rows.append(row)
+        
+        row = FormRowDescriptor(tag: StaticTag.countTag, type: .number, title: "商品库存")
+        row.configuration.cell.appearance = ["textField.placeholder" : "0" as AnyObject, "textField.textAlignment" : NSTextAlignment.right.rawValue as AnyObject]
         section1.rows.append(row)
         
         let section2 = FormSectionDescriptor(headerTitle: nil, footerTitle: nil)
@@ -137,19 +139,94 @@ class GoodsAppendViewController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        data = BADataObject.shareInstance().dataGoodEdit
+        setDataToForm()
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
+    func getDataFromForm() {
+        let goodAppend = self.form.formValues()
+        print("\(self.form.formValues().description)")
+        if let name = goodAppend[StaticTag.nameTag] as? String {
+            data?.name = name
+        }
+        
+        switch goodAppend[StaticTag.typeTag] as! Int64 {
+        case 0:
+            data?.type = "保健品"
+        case 1:
+            data?.type = "美妆"
+        case 2:
+            data?.type = "婴儿用品"
+        default:
+            data?.type = "其他"
+        }
+        if let count = goodAppend[StaticTag.countTag] as? String {
+            data?.count = Int64(count)!
+        }
+        if let purchase = goodAppend[StaticTag.purchaseTag] as? String {
+            data?.purchase = purchase
+        }
+        if let purchase_other = goodAppend[StaticTag.purchase_otherTag] as? String {
+            data?.purchase_other = purchase_other
+        }
+        if let sell = goodAppend[StaticTag.sellTag] as? String {
+            data?.sell = sell
+        }
+        if let proxy = goodAppend[StaticTag.proxyTag] as? String {
+            data?.proxy = proxy
+        }
+        if let note = goodAppend[StaticTag.noteTag] as? String {
+            data?.note = note
+        }
+    }
+    
+    func setDataToForm() {
+        if data == nil {
+            return
+        }
+        setValue(data!.name as AnyObject, forTag: StaticTag.nameTag)
+        var type = 3
+        switch data!.type {
+        case "保健品":
+            type = 0
+        case "美妆":
+            type = 1
+        case "婴儿用品":
+            type = 2
+        default:
+            type = 3
+        }
+        setValue(type as AnyObject, forTag: StaticTag.typeTag)
+        let count = String(data!.count)
+        setValue(count as AnyObject, forTag: StaticTag.countTag)
+        setValue(data!.purchase as AnyObject, forTag: StaticTag.purchaseTag)
+        setValue(data!.purchase_other as AnyObject, forTag: StaticTag.purchase_otherTag)
+        setValue(data!.sell as AnyObject, forTag: StaticTag.sellTag)
+        setValue(data!.proxy as AnyObject, forTag: StaticTag.proxyTag)
+        setValue(data!.note as AnyObject, forTag: StaticTag.noteTag)
+    }
+    
+    func checkFields() -> Bool {
+        // 检查必填项
+        let goodAppend = self.form.formValues()
+        if (goodAppend[StaticTag.nameTag] as? String) == nil {
+            return false
+        }
+        
+        return true
+    }
+    
     // MARK: - Table view data source
 /*
     override func numberOfSections(in tableView: UITableView) -> Int {

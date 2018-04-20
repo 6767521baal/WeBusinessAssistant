@@ -18,11 +18,10 @@ class GoodsTableViewController: UITableViewController {
     
     // 添加按钮
     @IBAction func addGoods(_ sender: UIBarButtonItem) {
+        // 设置新增商品
+        BADataObject.shareInstance().dataGoodEdit = nil
         // 弹出添加商品窗口
         self.performSegue(withIdentifier: "GoodsAppend", sender: nil)
-        // 刷新商品列表显示
-        dataSource = BADataObject.shareInstance().getGoodsData()
-        self.tableView.reloadData()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +72,7 @@ class GoodsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if(selectedCellIndexPath != nil && selectedCellIndexPath == indexPath){
-            return 120
+            return 150
         }
         return 50
     }
@@ -87,10 +86,28 @@ class GoodsTableViewController: UITableViewController {
         let title = "\(dataSource[indexPath.row].name)"
         let type = "\(dataSource[indexPath.row].type)"
         cell.labelName?.text = title
-        cell.labelType?.text = type
-        cell.labelPurchase?.text = "商品成本：\(dataSource[indexPath.row].purchase)"
-        cell.labelPurchase_other?.text = "其他成本：\(dataSource[indexPath.row].purchase_other)"
-
+        var sell = 0.0
+        if let data = Double(dataSource[indexPath.row].sell) {
+            sell = data
+        }
+        
+        cell.labelSell?.text = "售价：\(sell)"
+        cell.labelCount?.text = "库存：\(dataSource[indexPath.row].count)"
+        var purchase = 0.0, purchase_other = 0.0
+        if let data = Double(dataSource[indexPath.row].purchase) {
+            purchase = data
+        }
+        if let data = Double(dataSource[indexPath.row].purchase_other) {
+            purchase_other = data
+        }
+        
+        cell.labelPurchase?.text = "成本：\(purchase)+\(purchase_other)"
+        let profit = sell - purchase - purchase_other
+        cell.labelProfit?.text = "利润：\(profit)"
+        cell.labelType?.text = "商品类型：\(type)"
+        cell.labelProxy?.text = "代理价格：\(dataSource[indexPath.row].proxy)"
+        cell.labelNote?.text = dataSource[indexPath.row].note
+        
         return cell
     }
     
@@ -107,18 +124,29 @@ class GoodsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath)
         -> [UITableViewRowAction]? {
             
+            //创建“旗标”事件按钮
+            let edit = UITableViewRowAction(style: .normal, title: "编辑") {
+                action, index in
+                BADataObject.shareInstance().dataGoodEdit = self.dataSource[index.row]
+                // 弹出修改商品窗口
+                self.performSegue(withIdentifier: "GoodsAppend", sender: nil)
+                
+            }
+            edit.backgroundColor = UIColor.orange
+            
             //创建“删除”事件按钮
             let delete = UITableViewRowAction(style: .normal, title: "删除") {
                 action, index in
                 //将对应条目的数据删除
-                BADataObject.shareInstance().deleteGoodsData(at: indexPath.row)
+                
+                BADataObject.shareInstance().deleteGoodsData(goodID: self.dataSource[indexPath.row].id)
                 self.dataSource = BADataObject.shareInstance().getGoodsData()
                 tableView.reloadData()
             }
             delete.backgroundColor = UIColor.red
             
             //返回所有的事件按钮
-            return [delete]
+            return [delete, edit]
     }
     
  /*
