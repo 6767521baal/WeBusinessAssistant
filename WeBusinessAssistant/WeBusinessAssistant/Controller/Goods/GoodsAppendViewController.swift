@@ -13,6 +13,8 @@ class GoodsAppendViewController: FormViewController {
     
     var data :BADataGoods? = nil
     
+    var dataType :[BADataType] = []
+    
     struct StaticTag {
         static let nameTag = "name"
         static let typeTag = "type"
@@ -51,7 +53,7 @@ class GoodsAppendViewController: FormViewController {
         else {
             getDataFromForm()
             // 修改商品信息
-            if BADataObject.shareInstance().updateGoodData(goodID: data!.id, name: data!.name, type: data!.type, count: data!.count, purchase: data!.purchase, purchase_other: data!.purchase_other, sell: data!.sell, proxy: data!.proxy, note: data!.note, delete: data!.delete){
+            if BADataObject.shareInstance().updateGoodData(goodID: data!.id, name: data!.name, type: data!.typeString, count: data!.count, purchase: data!.purchase, purchase_other: data!.purchase_other, sell: data!.sell, proxy: data!.proxy, note: data!.note, delete: data!.delete){
                 print("修改商品成功！\n")
             }
         }
@@ -66,13 +68,14 @@ class GoodsAppendViewController: FormViewController {
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        dataType = BADataObject.shareInstance().getAllTypeData()
         self.loadForm()
     }
     
     fileprivate func loadForm() {
         
         let form :FormDescriptor
-        if BADataObject.shareInstance().dataGoodEdit == nil {
+        if BADataObject.shareInstance().editGood == nil {
             form = FormDescriptor(title: "添加商品")
         }
         else {
@@ -87,22 +90,22 @@ class GoodsAppendViewController: FormViewController {
         
         row = FormRowDescriptor(tag: StaticTag.typeTag, type: .picker, title: "商品类型")
         row.configuration.cell.showsInputToolbar = true
-        row.configuration.selection.options = ([0, 1, 2, 3] as [AnyObject]) as [AnyObject]
+        var intArray :[Int64] = []
+        for type in dataType {
+            intArray.append(type.id)
+        }
+        row.configuration.selection.options = (intArray as [AnyObject]) as [AnyObject]
         row.configuration.selection.optionTitleClosure = { value in
-            guard let option = value as? Int else { return "其他" }
-            switch option {
-            case 0:
-                return "保健品"
-            case 1:
-                return "美妆"
-            case 2:
-                return "婴儿用品"
-            default:
-                return "其他"
+            guard let option = value as? Int64 else { return "其他" }
+            for type in self.dataType {
+                if type.id == option {
+                    return type.name
+                }
             }
+            return "其他"
         }
         
-        row.value = 3 as AnyObject
+        row.value = 1 as AnyObject
         section1.rows.append(row)
         
         row = FormRowDescriptor(tag: StaticTag.countTag, type: .number, title: "商品库存")
@@ -139,7 +142,7 @@ class GoodsAppendViewController: FormViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        data = BADataObject.shareInstance().dataGoodEdit
+        data = BADataObject.shareInstance().editGood
         setDataToForm()
         
         // Uncomment the following line to preserve selection between presentations
@@ -155,38 +158,38 @@ class GoodsAppendViewController: FormViewController {
     }
 
     func getDataFromForm() {
-        let goodAppend = self.form.formValues()
+        let formData = self.form.formValues()
         print("\(self.form.formValues().description)")
-        if let name = goodAppend[StaticTag.nameTag] as? String {
+        if let name = formData[StaticTag.nameTag] as? String {
             data?.name = name
         }
         
-        switch goodAppend[StaticTag.typeTag] as! Int64 {
-        case 0:
-            data?.type = "保健品"
-        case 1:
-            data?.type = "美妆"
-        case 2:
-            data?.type = "婴儿用品"
-        default:
-            data?.type = "其他"
+        if let typeID = formData[StaticTag.typeTag] as? Int64 {
+            for type in dataType {
+                if typeID == type.id {
+                    data?.typeString = type.name
+                }
+            }
         }
-        if let count = goodAppend[StaticTag.countTag] as? String {
+        else {
+            data?.typeString = "其他"
+        }
+        if let count = formData[StaticTag.countTag] as? String {
             data?.count = Int64(count)!
         }
-        if let purchase = goodAppend[StaticTag.purchaseTag] as? String {
+        if let purchase = formData[StaticTag.purchaseTag] as? String {
             data?.purchase = purchase
         }
-        if let purchase_other = goodAppend[StaticTag.purchase_otherTag] as? String {
+        if let purchase_other = formData[StaticTag.purchase_otherTag] as? String {
             data?.purchase_other = purchase_other
         }
-        if let sell = goodAppend[StaticTag.sellTag] as? String {
+        if let sell = formData[StaticTag.sellTag] as? String {
             data?.sell = sell
         }
-        if let proxy = goodAppend[StaticTag.proxyTag] as? String {
+        if let proxy = formData[StaticTag.proxyTag] as? String {
             data?.proxy = proxy
         }
-        if let note = goodAppend[StaticTag.noteTag] as? String {
+        if let note = formData[StaticTag.noteTag] as? String {
             data?.note = note
         }
     }
@@ -196,18 +199,14 @@ class GoodsAppendViewController: FormViewController {
             return
         }
         setValue(data!.name as AnyObject, forTag: StaticTag.nameTag)
-        var type = 3
-        switch data!.type {
-        case "保健品":
-            type = 0
-        case "美妆":
-            type = 1
-        case "婴儿用品":
-            type = 2
-        default:
-            type = 3
+        var typeInt :Int64 = 0    // 默认类型为其他
+        for type in dataType {
+            if data!.typeString == type.name {
+                typeInt = type.id
+                break
+            }
         }
-        setValue(type as AnyObject, forTag: StaticTag.typeTag)
+        setValue(typeInt as AnyObject, forTag: StaticTag.typeTag)
         let count = String(data!.count)
         setValue(count as AnyObject, forTag: StaticTag.countTag)
         setValue(data!.purchase as AnyObject, forTag: StaticTag.purchaseTag)

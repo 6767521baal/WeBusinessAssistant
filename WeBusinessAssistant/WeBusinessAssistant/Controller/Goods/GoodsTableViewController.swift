@@ -12,14 +12,14 @@ class GoodsTableViewController: UITableViewController {
 
     let identifier = "GoodsCell"
     var dataShow:[String] = []
-    var dataSource :[BADataGoods] = []
+    var dataGood :[BADataGoods] = []
     
     var selectedCellIndexPath:IndexPath!
     
     // 添加按钮
     @IBAction func addGoods(_ sender: UIBarButtonItem) {
         // 设置新增商品
-        BADataObject.shareInstance().dataGoodEdit = nil
+        BADataObject.shareInstance().editGood = nil
         // 弹出添加商品窗口
         self.performSegue(withIdentifier: "GoodsAppend", sender: nil)
     }
@@ -33,10 +33,14 @@ class GoodsTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         self.tableView.register(UINib(nibName:"DetailTableViewCell", bundle:nil), forCellReuseIdentifier: self.identifier)
 
-        dataSource = BADataObject.shareInstance().getGoodsData()
-        self.tableView.reloadData()
         self.tableView!.separatorStyle = .none
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        BADataObject.shareInstance().refreshTypeData(includeDelete: true)
+        dataGood = BADataObject.shareInstance().getAllGoodsData()
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
@@ -53,7 +57,7 @@ class GoodsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return dataSource.count
+        return dataGood.count
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -83,30 +87,30 @@ class GoodsTableViewController: UITableViewController {
         
         cell.layer.masksToBounds = true
         // Configure the cell...
-        let title = "\(dataSource[indexPath.row].name)"
-        let type = "\(dataSource[indexPath.row].type)"
+        let title = "\(dataGood[indexPath.row].name)"
+        let type = "\(dataGood[indexPath.row].typeString)"
         cell.labelName?.text = title
         var sell = 0.0
-        if let data = Double(dataSource[indexPath.row].sell) {
+        if let data = Double(dataGood[indexPath.row].sell) {
             sell = data
         }
         
         cell.labelSell?.text = "售价：\(sell)"
-        cell.labelCount?.text = "库存：\(dataSource[indexPath.row].count)"
+        cell.labelCount?.text = "库存：\(dataGood[indexPath.row].count)"
         var purchase = 0.0, purchase_other = 0.0
-        if let data = Double(dataSource[indexPath.row].purchase) {
+        if let data = Double(dataGood[indexPath.row].purchase) {
             purchase = data
         }
-        if let data = Double(dataSource[indexPath.row].purchase_other) {
+        if let data = Double(dataGood[indexPath.row].purchase_other) {
             purchase_other = data
         }
         
         cell.labelPurchase?.text = "成本：\(purchase)+\(purchase_other)"
         let profit = sell - purchase - purchase_other
         cell.labelProfit?.text = "利润：\(profit)"
-        cell.labelType?.text = "商品类型：\(type)"
-        cell.labelProxy?.text = "代理价格：\(dataSource[indexPath.row].proxy)"
-        cell.labelNote?.text = dataSource[indexPath.row].note
+        cell.labelType?.text = "类型：\(type)"
+        cell.labelProxy?.text = "代理价格：\(dataGood[indexPath.row].proxy)"
+        cell.labelNote?.text = dataGood[indexPath.row].note
         
         return cell
     }
@@ -127,7 +131,7 @@ class GoodsTableViewController: UITableViewController {
             //创建“旗标”事件按钮
             let edit = UITableViewRowAction(style: .normal, title: "编辑") {
                 action, index in
-                BADataObject.shareInstance().dataGoodEdit = self.dataSource[index.row]
+                BADataObject.shareInstance().editGood = self.dataGood[index.row]
                 // 弹出修改商品窗口
                 self.performSegue(withIdentifier: "GoodsAppend", sender: nil)
                 
@@ -139,8 +143,8 @@ class GoodsTableViewController: UITableViewController {
                 action, index in
                 //将对应条目的数据删除
                 
-                BADataObject.shareInstance().deleteGoodsData(goodID: self.dataSource[indexPath.row].id)
-                self.dataSource = BADataObject.shareInstance().getGoodsData()
+                BADataObject.shareInstance().deleteGoodsData(goodID: self.dataGood[indexPath.row].id)
+                self.dataGood = BADataObject.shareInstance().getAllGoodsData()
                 tableView.reloadData()
             }
             delete.backgroundColor = UIColor.red

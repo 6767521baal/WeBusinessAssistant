@@ -16,6 +16,10 @@ class MainController: UITabBarController {
         super.viewDidLoad()
         self.selectedIndex = 2
         
+        // 刷新表，先刷新类型表，商品表需要类型表的数据
+        BADataObject.shareInstance().refreshTypeData(includeDelete: true)
+        BADataObject.shareInstance().refreshGoodsData(includeDelete: true)
+        
     }
 
     override func didReceiveMemoryWarning() {
