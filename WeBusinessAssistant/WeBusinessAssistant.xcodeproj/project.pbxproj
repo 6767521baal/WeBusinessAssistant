@@ -13,6 +13,9 @@
 		DA0C80B0208DDA1700C40D59 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C80AF208DDA1700C40D59 /* SettingTableViewController.swift */; };
 		DA0C80B2208F083D00C40D59 /* TypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C80B1208F083D00C40D59 /* TypeTableViewController.swift */; };
 		DA0C80B4208F193000C40D59 /* TypeAppendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C80B3208F193000C40D59 /* TypeAppendViewController.swift */; };
+		DA0C80B720906B3900C40D59 /* CustomerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C80B620906B3900C40D59 /* CustomerTableViewController.swift */; };
+		DA0C80B920906F1600C40D59 /* CustomerAppendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C80B820906F1600C40D59 /* CustomerAppendViewController.swift */; };
+		DA0C80BB209075D700C40D59 /* BACustomerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0C80BA209075D700C40D59 /* BACustomerTable.swift */; };
 		DA1CD2F82079FF2800B21AC8 /* BADataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1CD2F72079FF2800B21AC8 /* BADataBase.swift */; };
 		DA1CD2FA207C6A7000B21AC8 /* BADataObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1CD2F9207C6A7000B21AC8 /* BADataObject.swift */; };
 		DA50FE54208095A2004E1676 /* GoodsAppendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA50FE53208095A2004E1676 /* GoodsAppendViewController.swift */; };
@@ -44,6 +47,9 @@
 		DA0C80AF208DDA1700C40D59 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
 		DA0C80B1208F083D00C40D59 /* TypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTableViewController.swift; sourceTree = "<group>"; };
 		DA0C80B3208F193000C40D59 /* TypeAppendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeAppendViewController.swift; sourceTree = "<group>"; };
+		DA0C80B620906B3900C40D59 /* CustomerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerTableViewController.swift; sourceTree = "<group>"; };
+		DA0C80B820906F1600C40D59 /* CustomerAppendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomerAppendViewController.swift; sourceTree = "<group>"; };
+		DA0C80BA209075D700C40D59 /* BACustomerTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BACustomerTable.swift; sourceTree = "<group>"; };
 		DA1CD2F72079FF2800B21AC8 /* BADataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BADataBase.swift; sourceTree = "<group>"; };
 		DA1CD2F9207C6A7000B21AC8 /* BADataObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BADataObject.swift; sourceTree = "<group>"; };
 		DA50FE53208095A2004E1676 /* GoodsAppendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsAppendViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +115,15 @@
 			path = Setting;
 			sourceTree = "<group>";
 		};
+		DA0C80B5209033BE00C40D59 /* Customer */ = {
+			isa = PBXGroup;
+			children = (
+				DA0C80B620906B3900C40D59 /* CustomerTableViewController.swift */,
+				DA0C80B820906F1600C40D59 /* CustomerAppendViewController.swift */,
+			);
+			path = Customer;
+			sourceTree = "<group>";
+		};
 		DA5346702073652500733FBF = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +163,7 @@
 				DA53468E20736E8800733FBF /* MainController.swift */,
 				DA534695207376B500733FBF /* OrderViewController.swift */,
 				DA534697207376C500733FBF /* CountViewController.swift */,
+				DA0C80B5209033BE00C40D59 /* Customer */,
 				DAA9509D2087333F00AEE9E4 /* Goods */,
 				DA0C80AE208DD9E400C40D59 /* Setting */,
 				DAA9509C2087332300AEE9E4 /* cell */,
@@ -203,6 +219,7 @@
 				DA1CD2F72079FF2800B21AC8 /* BADataBase.swift */,
 				DAA9509F208D777500AEE9E4 /* BAGoodsTable.swift */,
 				DAA950A1208D869C00AEE9E4 /* BATypeTable.swift */,
+				DA0C80BA209075D700C40D59 /* BACustomerTable.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -350,6 +367,7 @@
 				DA0C80B0208DDA1700C40D59 /* SettingTableViewController.swift in Sources */,
 				DAA950A2208D869C00AEE9E4 /* BATypeTable.swift in Sources */,
 				DA5346AD2074BAE900733FBF /* GoodsTableViewController.swift in Sources */,
+				DA0C80B920906F1600C40D59 /* CustomerAppendViewController.swift in Sources */,
 				DA1CD2FA207C6A7000B21AC8 /* BADataObject.swift in Sources */,
 				DA0C80B4208F193000C40D59 /* TypeAppendViewController.swift in Sources */,
 				DA50FE54208095A2004E1676 /* GoodsAppendViewController.swift in Sources */,
@@ -361,6 +379,8 @@
 				DAA950A0208D777500AEE9E4 /* BAGoodsTable.swift in Sources */,
 				DA534698207376C500733FBF /* CountViewController.swift in Sources */,
 				DA0C80B2208F083D00C40D59 /* TypeTableViewController.swift in Sources */,
+				DA0C80B720906B3900C40D59 /* CustomerTableViewController.swift in Sources */,
+				DA0C80BB209075D700C40D59 /* BACustomerTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

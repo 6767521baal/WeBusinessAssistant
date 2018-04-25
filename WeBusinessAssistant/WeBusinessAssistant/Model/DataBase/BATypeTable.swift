@@ -6,6 +6,16 @@
 //  Copyright © 2018年 刘启. All rights reserved.
 //
 
+/*  商品类型的数据库表 table_good_type
+ 字段为
+ type_id                自增非空主键 与table_goods表的goods_type关联
+ type_name              商品类型名
+ type_is_delete         商品类型删除标志,已删除商品类型不会在界面中显示，也无法在添加商品时的类型中选择，但仍会被在已存在的商品中关联。
+ 
+ 提供基本的增、删、改、查功能
+ 获取所有商品类型(getAllItems)时，可以根据参数决定是否返回已被删除的商品类型(已被删除商品类型主要用于与现有商品的关联)
+ */
+
 import Foundation
 import SQLite
 
@@ -79,6 +89,7 @@ class BATypeTable {
         for item in try! BADatabase.shareInstance().db.prepare(tableType.TABLE_GOOD_TYPE.filter(tableType.TABLE_TYPE_NAME == name)) {
             print("类型 读取 ———— id: \(item[tableType.TABLE_TYPE_ID]), name: \(item[tableType.TABLE_TYPE_NAME]), delete: \(item[tableType.TABLE_TYPE_DELETE])")
             let data = BADataType()
+            data.id = item[tableType.TABLE_TYPE_ID]
             data.name = item[tableType.TABLE_TYPE_NAME]
             if item[tableType.TABLE_TYPE_DELETE] == 1 {
                 data.delete = true

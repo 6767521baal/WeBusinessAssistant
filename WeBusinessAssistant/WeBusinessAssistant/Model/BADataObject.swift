@@ -54,6 +54,29 @@ class BADataType : NSObject {
     
 }
 
+class BADataCustomer : NSObject {
+    
+    var id:Int64
+    var name :String
+    var telephone :String
+    var address :String
+    var note :String
+    var proxy :Bool
+    var delete :Bool
+    
+    override init()
+    {
+        id = -1
+        name = ""
+        telephone = ""
+        address = ""
+        note = ""
+        proxy = false
+        delete = false
+    }
+    
+}
+
 class BADataObject: NSObject {
     
     // 持有的所有数据
@@ -80,6 +103,7 @@ class BADataObject: NSObject {
         // 遍历表内容
         BADatabase.shareInstance().tableGoods.queryAllItems()
         BADatabase.shareInstance().tableType.queryAllItems()
+        BADatabase.shareInstance().tableCustomer.queryAllItems()
     }
     
     /*

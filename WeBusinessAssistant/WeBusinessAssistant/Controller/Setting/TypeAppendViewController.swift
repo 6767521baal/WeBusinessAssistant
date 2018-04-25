@@ -15,10 +15,11 @@ class TypeAppendViewController: UIViewController {
     @IBOutlet weak var textType: UITextField!
     
     @IBAction func saveType(_ sender: UIButton) {
-        if let name = textType.text {
+        let name = textType.text
+        if name != nil && !(name?.isEmpty)! {
             if BADataObject.shareInstance().editType == nil {
                 // 新增商品类型信息
-                dataType.name = name
+                dataType.name = name!
                 if BADataObject.shareInstance().addTypeData(data: dataType) {
                     print("新增商品类型成功！\n")
                 }
@@ -52,9 +53,11 @@ class TypeAppendViewController: UIViewController {
         super.viewDidLoad()
         if BADataObject.shareInstance().editType == nil {
             // 新增商品类型
+            self.title = "新增类型"
         }
         else {
             // 修改商品类型
+            self.title = "修改类型"
             dataType = BADataObject.shareInstance().editType!
             textType.text = dataType.name
         }

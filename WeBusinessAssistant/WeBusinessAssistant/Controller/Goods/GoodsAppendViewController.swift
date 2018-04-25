@@ -59,11 +59,14 @@ class GoodsAppendViewController: FormViewController {
         }
         
         // 返回商品管理
+        self.presentingViewController!.dismiss(animated: true, completion: nil)
+        /*
         let sb = UIStoryboard(name:"Main", bundle: nil)
         
         let listController = sb.instantiateViewController(withIdentifier: "MainTabBarController") as! MainController
         listController.selectedIndex=1
         self.present(listController, animated: true, completion: nil)
+ */
     }
     
     required init(coder aDecoder: NSCoder) {

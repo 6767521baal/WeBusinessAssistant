@@ -6,6 +6,24 @@
 //  Copyright © 2018年 刘启. All rights reserved.
 //
 
+/*  商品的数据库表 table_goods
+    字段为
+    goods_id                自增非空主键
+    goods_name              商品名
+    goods_type              商品类型 与table_good_type表的type_id关联
+    goods_count             商品库存
+    goods_purchase          商品成本
+    goods_purchase_other    其他成本
+    goods_sell              商品售价
+    goods_proxy             商品代理价格
+    goods_note              商品备注
+    goods_is_delete         商品删除标志,已删除商品不会在界面中显示，但仍会被在订单中关联。
+ 
+    提供基本的增、删、改、查功能
+    获取所有商品(getAllItems)时，可以根据参数决定是否返回已被删除的商品(已被删除商品主要用于与现有订单的关联)
+ */
+
+
 import Foundation
 import SQLite
 
@@ -76,6 +94,7 @@ class BAGoodsTable {
         for item in try! BADatabase.shareInstance().db.prepare(tableGoods.TABLE_GOODS.filter(tableGoods.TABLE_GOODS_NAME == name)) {
             print("商品 读取 ———— id: \(item[tableGoods.TABLE_GOODS_ID]), name: \(item[tableGoods.TABLE_GOODS_NAME]), type: \(item[tableGoods.TABLE_GOODS_TYPE]), count: \(item[tableGoods.TABLE_GOODS_COUNT]), purchase: \(item[tableGoods.TABLE_GOODS_PURCHASE]), purchase_other: \(item[tableGoods.TABLE_GOODS_PURCHASE_OTHER]), sell: \(item[tableGoods.TABLE_GOODS_SELL]), proxy: \(item[tableGoods.TABLE_GOODS_PROXY]), note: \(item[tableGoods.TABLE_GOODS_NOTE]), delete: \(item[tableGoods.TABLE_GOODS_DELETE])")
             let data = BADataGoods()
+            data.id = item[tableGoods.TABLE_GOODS_ID]
             data.name = item[tableGoods.TABLE_GOODS_NAME]
             data.typeInt64 = item[tableGoods.TABLE_GOODS_TYPE]
             data.count = item[tableGoods.TABLE_GOODS_COUNT]

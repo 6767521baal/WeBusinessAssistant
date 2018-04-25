@@ -15,6 +15,7 @@ class BADatabase {
     
     let tableGoods = BAGoodsTable()
     let tableType = BATypeTable()
+    let tableCustomer = BACustomerTable()
     
     private static let database = BADatabase()
     
@@ -37,5 +38,6 @@ class BADatabase {
     func createTables() {
         tableGoods.createTable()
         tableType.createTable()
+        tableCustomer.createTable()
     }
 }
